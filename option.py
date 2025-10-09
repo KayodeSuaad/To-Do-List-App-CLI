@@ -1,10 +1,3 @@
-print("---TO-DO LIST APP---")
-print(".....Welcome on Board🤗 .....")
-
-menu =(" What would you like to do? \n 1. Add task \n 2. View Task \n 3.Delete/ Markdone \n 4.Exit")
-user_input = input("Choose from the menu (1-4): ")
-
-
 def load_task(tasks):
     tasks = []
     try: 
@@ -24,7 +17,7 @@ def add_task(tasks):
         print("Task added Successfully!")
 
 
-def view_tasks(tasks):
+def view_task(tasks):
     print("\n Your Task: ")
     try:
         with open("tasks.txt", "r") as file:
@@ -78,13 +71,13 @@ def mark_task_done(tasks):
         print("Please enter a number!")
         return
     
-    task_done = int(task_num)
+    task_done = int(task_done)
     if task_done < 1 or task_done > len(tasks):
         print("Number not found in task")
         return
     
     completed_task = tasks[task_done -1]
-    tasks[task_done -1] = completed_task "✔"
+    tasks[task_done -1] = completed_task +  "✔"
 
     print(f"Task '{completed_task}' marked as done!")
 
@@ -92,6 +85,33 @@ def mark_task_done(tasks):
         for task in tasks:
             file.write(task + "\n")
     return tasks
+
+
+
+while True:
+    tasks = load_task()
+
+    print("---TO-DO LIST APP---")
+    print(".....Welcome on Board🤗 .....")
+
+    menu =(" What would you like to do? \n 1. Add task \n 2. View Task \n 3.Delete \n 4.Markdone \n 5.Exit")
+    user_input = input("Choose from the menu (1-5): ")
+
+    if user_input == "1":
+        add_task(tasks)
+    elif user_input =="2":
+        view_task(tasks)
+    elif user_input =="3":
+        delete_task(tasks)
+    elif user_input(tasks) == "4":
+        mark_task_done(tasks)
+    elif user_input =="5":
+        print("Goodbye!!! 🤞")
+        break
+    else:
+        print("Incorrect number, Choose between 1-5")
+
+
 
 
 
