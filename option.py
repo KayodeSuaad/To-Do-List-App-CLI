@@ -1,7 +1,7 @@
 def load_task():
     tasks = []
     try: 
-        with open("tasks.txt", "r") as file:
+        with open("tasks.txt", "r", encoding = "utf-8") as file:
             for line in file:
                 tasks.append(line.strip())
     except FileNotFoundError:
@@ -12,7 +12,7 @@ def add_task(tasks):
     new_task = input("Enter task name: ")
     tasks.append(new_task)
 
-    with open("tasks.txt", "a") as file:
+    with open("tasks.txt", "a", encoding = "utf-8") as file:
         
         file.write(new_task + "\n")
         print("Task added Successfully!")
@@ -21,7 +21,7 @@ def add_task(tasks):
 def view_task(tasks):
     print("\n Your Task: ")
     try:
-        with open("tasks.txt", "r") as file:
+        with open("tasks.txt", "r", encoding = "utf-8") as file:
             lines = file.readlines()
             if not lines:
                 print("Not task yet!")
@@ -37,7 +37,7 @@ def view_task(tasks):
 def delete_task(tasks):
     try:
         task_delete = int(input("Input task number to be deleted: "))
-        with open("tasks.txt", "r") as file:
+        with open("tasks.txt", "r" , encoding = "utf-8") as file:
             tasks = file.readlines()
             if not tasks:
                 print("No task yet")
@@ -83,7 +83,7 @@ def mark_task_done(tasks):
 
     print(f"Task '{completed_task}' marked as done!")
 
-    with open("tasks.txt", "w") as file:
+    with open("tasks.txt", "w", encoding = "utf-8") as file:
         for task in tasks:
             file.write(task + "\n")
     return tasks
